@@ -18,6 +18,7 @@ p,Pawn
 Q,Queen
 R,Rook
 T,TimeThief
+Tb,Tomb
 V,VerticalMover
 X,Werewolf
 W,Witch
