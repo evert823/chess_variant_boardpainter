@@ -38,16 +38,20 @@ class BoardPainter:
         self.boardimage = Image.new('RGB', (w, h), (0, 0, 0))
 
     def add_coordinates(self):
+        myfontsize = 16
+        if self.MyChessPosition.boardheight > 9:
+            myfontsize = 13
+
         alphabet = "abcdefghijklmnopqrstuvwxyz"
         draw = ImageDraw.Draw(self.boardimage)
-        font = ImageFont.truetype("arial.ttf", 16)
+        font = ImageFont.truetype("arial.ttf", myfontsize)
 
         for j in range(self.MyChessPosition.boardheight):
             rj = (self.MyChessPosition.boardheight - 1) - j
             y = rj * self.piecesize
             y += self.edgesize_top
             y += 21
-            draw.text((7, y),str(j + 1),(255,255,255),font=font)
+            draw.text((5, y),str(j + 1),(255,255,255),font=font)
 
         for i in range(self.MyChessPosition.boardwidth):
             y = (self.MyChessPosition.boardheight) * self.piecesize
