@@ -61,12 +61,20 @@ class BoardPainter:
                 myabc = str(i)
             draw.text((x, y),myabc,(255,255,255),font=font)
 
+    def _symbol_found(self, psymbol: str, ppiecename: str):
+        teststring = psymbol.replace("-", "").replace(" ", "").replace(".", "")
+        if teststring != "" and ppiecename == "":
+            return False
+        return True
+
     def paste_piece_image(self, j: int, i: int, psymbol: str):
         if psymbol[0] == "-":
             piececolour = "black"
         else:
             piececolour = "white"
         piecename = self.MyPieceNameHandler.lookup_piecename_by_symbol(psymbol.replace("-", ""))
+        symbol_found = self._symbol_found(psymbol=psymbol, ppiecename=piecename)
+
         x = i * self.piecesize
         x += self.edgesize_left
         rj = (self.MyChessPosition.boardheight - 1) - j
@@ -78,12 +86,19 @@ class BoardPainter:
         else:
             squarecolour = "black"
 
-        if piecename == "":
+        if symbol_found == False:
+            imagefilename = f"_notfoundon{squarecolour}.{self.pieceimages_extension}"
+        elif piecename == "":
             imagefilename = f"vacanton{squarecolour}.{self.pieceimages_extension}"
         else:
             imagefilename = f"{piececolour}{piecename.lower()}on{squarecolour}.{self.pieceimages_extension}"
 
-        pieceimage = Image.open(f"{self.pieceimages_folder}\\{imagefilename}", mode='r')
+        try:
+            pieceimage = Image.open(f"{self.pieceimages_folder}\\{imagefilename}", mode='r')
+        except:
+            imagefilename = f"_notfoundon{squarecolour}.{self.pieceimages_extension}"
+            pieceimage = Image.open(f"{self.pieceimages_folder}\\{imagefilename}", mode='r')
+
         pieceimage.convert('RGB')
         self.boardimage.paste(pieceimage, (x, y))
 
