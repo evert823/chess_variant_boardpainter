@@ -8,5 +8,7 @@ myboardpainter.create_board_image(".\\boardimages\\personC_personD.png")
 
 myboardpainter.pieceimages_folder = "pieceimages_classicwood"
 myboardpainter.pieceimages_extension = "png"
+myboardpainter.a1_is_white = False
+
 myboardpainter.load_file(".\\positions\\test_classicwood.json")
 myboardpainter.create_board_image(".\\boardimages\\test_classicwood.png")

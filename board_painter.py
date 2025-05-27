@@ -10,6 +10,7 @@ class BoardPainter:
         self.MyPieceNameHandler = PieceNameHandler()
         self.pieceimages_folder = "pieceimages"
         self.pieceimages_extension = "jpg"
+        self.a1_is_white = True
         self.piecesize = 57
         self.edgesize_top = 6
         self.edgesize_bottom = 24
@@ -71,6 +72,17 @@ class BoardPainter:
             return False
         return True
 
+    def get_squarecolour(self, j: int, i: int) -> str:
+        if self.a1_is_white:
+            mydummy: int = 0
+        else:
+            mydummy: int = 1
+
+        if (i + j + mydummy) % 2 == 0:
+            return "white"
+        else:
+            return "black"
+
     def paste_piece_image(self, j: int, i: int, psymbol: str):
         if psymbol[0] == "-":
             piececolour = "black"
@@ -85,10 +97,7 @@ class BoardPainter:
         y = rj * self.piecesize
         y += self.edgesize_top
 
-        if (i + j) % 2 == 0:
-            squarecolour = "white"
-        else:
-            squarecolour = "black"
+        squarecolour = self.get_squarecolour(i, j)
 
         if symbol_found == False:
             imagefilename = f"_notfoundon{squarecolour}.{self.pieceimages_extension}"
