@@ -29,13 +29,17 @@ class BoardPainter:
     def load_file(self, pfilename):
         self.MyChessPosition.load_from_json(pfilename)
 
-    def prepare_board(self):
+    def boardimage_w_h(self):
         w = self.MyChessPosition.boardwidth * self.piecesize
         w += self.edgesize_left
         w += self.edgesize_right
         h = self.MyChessPosition.boardheight * self.piecesize
         h += self.edgesize_top
         h += self.edgesize_bottom
+        return w, h
+
+    def prepare_board(self):
+        w, h = self.boardimage_w_h()
         self.boardimage = Image.new('RGB', (w, h), (0, 0, 0))
 
     def add_coordinates(self):
@@ -115,7 +119,7 @@ class BoardPainter:
         pieceimage.convert('RGB')
         self.boardimage.paste(pieceimage, (x, y))
 
-    def create_board_image(self, pimagefilename):
+    def create_board_image(self):
         self.prepare_board()
         self.add_coordinates()
 
@@ -124,4 +128,6 @@ class BoardPainter:
                 symbol = self.MyChessPosition.squares[j][i]
                 self.paste_piece_image(j, i, symbol)
 
+    def create_board_image_and_save(self, pimagefilename):
+        self.create_board_image()
         self.boardimage.save(pimagefilename)
