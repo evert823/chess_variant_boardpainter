@@ -16,6 +16,11 @@ class mvp_3d:
         self.MyChessPosition3D.load_from_json(pfilename)
 
     def prepare_layer(self, z: int):
+        if z % 2 == 0:
+            self.MyBoardPainter.a1_is_white = False
+        else:
+            self.MyBoardPainter.a1_is_white = True
+
         for j in range(self.MyChessPosition3D.boardheight):
             for i in range(self.MyChessPosition3D.boardwidth):
                 self.MyBoardPainter.MyChessPosition.squares[j][i] = self.MyChessPosition3D.squares[z][j][i]
