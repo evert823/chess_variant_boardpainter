@@ -1,8 +1,8 @@
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
-from chess_position import ChessPosition
-from piece_name_handler import PieceNameHandler
+from classes.chess_position import ChessPosition
+from classes.piece_name_handler import PieceNameHandler
 
 class BoardPainter:
     def __init__(self):
