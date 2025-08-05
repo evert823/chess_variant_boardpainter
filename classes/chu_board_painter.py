@@ -15,7 +15,7 @@ class ChuBoardPainter:
         self.MyPieceNameHandler = PieceNameHandler()
         self.pieceimages_folder = "pieceimages_chushogi"
         self.pieceimages_extension = "png"
-        self.piecewidth = 72
+        self.piecewidth = 73
         self.pieceheight = 79
         self.edgesize_top = 25
         self.edgesize_bottom = 3
