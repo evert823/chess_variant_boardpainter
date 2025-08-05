@@ -119,9 +119,13 @@ class ChuBoardPainter:
             imagefilename = f"vacant.{self.pieceimages_extension}"
         else:
             imagefilename = f"{piecename.lower()}_{piececolour}.{self.pieceimages_extension}"
+            imagefilename2 = f"{piecename.lower()}_{piececolour}_promoted.{self.pieceimages_extension}"
 
         try:
-            pieceimage = Image.open(f"{self.pieceimages_folder}\\{imagefilename}", mode='r')
+            try:
+                pieceimage = Image.open(f"{self.pieceimages_folder}\\{imagefilename}", mode='r')
+            except:
+                pieceimage = Image.open(f"{self.pieceimages_folder}\\{imagefilename2}", mode='r')
         except:
             imagefilename = f"_notfound.{self.pieceimages_extension}"
             pieceimage = Image.open(f"{self.pieceimages_folder}\\{imagefilename}", mode='r')
