@@ -21,7 +21,8 @@ class ChuBoardPainter:
         self.edgesize_bottom = 3
         self.edgesize_left = 3
         self.edgesize_right = 24
-        self.boardcolor = (243, 226, 171)
+        #self.boardcolor = (243, 226, 171)
+        self.boardcolor = (204, 85, 34)
         self.boardimage = Image.new('RGB', (self.piecewidth, self.pieceheight), self.boardcolor)
         self.load_piece_definitions()
 
