@@ -94,17 +94,27 @@ class ChuBoardPainter:
 
 
     def _symbol_found(self, psymbol: str, ppiecename: str):
-        teststring = psymbol.replace("-", "").replace(" ", "").replace(".", "")
+        teststring = psymbol.replace("-", "").replace(" ", "").replace(".", "").replace("*", "")
         if teststring != "" and ppiecename == "":
             return False
         return True
 
     def paste_piece_image(self, j: int, i: int, psymbol: str):
+        #For Chu Shogi the square content should end with asterisk (*) to indicate a promoted piece
+        #E.g. B = initial Bishop, B* is FL promoted to Bishop
         if psymbol[0] == "-":
             piececolour = "gote"
         else:
             piececolour = "sente"
-        piecename = self.MyPieceNameHandler.lookup_piecename_by_symbol(psymbol.replace("-", ""))
+
+        if psymbol.endswith("*"):
+            ispromoted = True
+        else:
+            ispromoted = False
+        
+        mysymbol = psymbol.replace("-", "").replace("*", "")
+
+        piecename = self.MyPieceNameHandler.lookup_piecename_by_symbol(mysymbol)
         symbol_found = self._symbol_found(psymbol=psymbol, ppiecename=piecename)
 
         x = i * self.piecewidth
@@ -117,6 +127,9 @@ class ChuBoardPainter:
             imagefilename = f"_notfound.{self.pieceimages_extension}"
         elif piecename == "":
             imagefilename = f"vacant.{self.pieceimages_extension}"
+        elif ispromoted == True:
+            imagefilename = f"{piecename.lower()}_{piececolour}_promoted.{self.pieceimages_extension}"
+            imagefilename2 = imagefilename
         else:
             imagefilename = f"{piecename.lower()}_{piececolour}.{self.pieceimages_extension}"
             imagefilename2 = f"{piecename.lower()}_{piececolour}_promoted.{self.pieceimages_extension}"
