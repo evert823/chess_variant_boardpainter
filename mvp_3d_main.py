@@ -1,7 +1,5 @@
 #mvp_3d is a MVP for handle chess position with 3D structure and create the image
-import sys
-sys.path.append(".\\classes")
-from mvp_3d import mvp_3d
+from classes.mvp_3d import mvp_3d
 
 mymvp_3d = mvp_3d()
 

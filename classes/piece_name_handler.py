@@ -2,8 +2,8 @@ class PieceNameHandler:
     def __init__(self):
         self.piecedict = {"piecedefinitions" : []}
 
-    def load_piece_definitions(self):
-        File1 = open(".\\piecedefinitions\\piecedefinitions.csv", 'r')
+    def load_piece_definitions(self, filename=".\\piecedefinitions\\piecedefinitions.csv"):
+        File1 = open(filename, 'r')
         Lines = File1.readlines()
         for line in Lines:
             if line[:21] != "piecesymbol,piecename":

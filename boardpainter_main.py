@@ -1,6 +1,4 @@
-import sys
-sys.path.append(".\\classes")
-from board_painter import BoardPainter
+from classes.board_painter import BoardPainter
 
 myboardpainter = BoardPainter()
 myboardpainter.load_file(".\\positions\\personA_personB.json")

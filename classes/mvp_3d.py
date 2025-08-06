@@ -1,7 +1,7 @@
 #mvp_3d is a MVP for handle chess position with 3D structure and create the image
 from PIL import Image
-from chess_position_3d import ChessPosition3D
-from board_painter import BoardPainter
+from classes.chess_position_3d import ChessPosition3D
+from classes.board_painter import BoardPainter
 
 class mvp_3d:
     def __init__(self):
