@@ -34,7 +34,7 @@ GG,Great_general
 MG,Multi_general
 RG,Rook_general
 VG,Vice_general
-CS,Chariot_soldier
+Ch,Chariot_soldier
 SS,Side_soldier
 VS,Vertical_soldier
 Dg,Dog
@@ -45,7 +45,7 @@ N,Knight
 LH,Lion_hawk
 WB,Water_buffalo
 AB,Angry_boar
-Ct,Cat_sword
+CS,Cat_sword
 EW,Evil_wolf
 Fn,Flying_dragon
 I,Iron_general
