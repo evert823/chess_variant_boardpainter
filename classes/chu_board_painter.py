@@ -13,7 +13,7 @@ class ChuBoardPainter:
     def __init__(self):
         self.MyChessPosition = ChessPosition()
         self.MyPieceNameHandler = PieceNameHandler()
-        self.pieceimages_folder = "pieceimages_chushogi"
+        self.pieceimages_folder = "shogi_variants\\pieceimages_chushogi"
         self.pieceimages_extension = "png"
         self.piecewidth = 73
         self.pieceheight = 79
@@ -27,7 +27,7 @@ class ChuBoardPainter:
         self.load_piece_definitions()
 
     def load_piece_definitions(self):
-        self.MyPieceNameHandler.load_piece_definitions(filename=".\\piecedefinitions\\chushogipiecedefinitions.csv")
+        self.MyPieceNameHandler.load_piece_definitions(filename=".\\shogi_variants\\piecedefinitions\\chushogipiecedefinitions.csv")
         mytest = self.MyPieceNameHandler.lookup_piecename_by_symbol("K")
         assert mytest == "King"
         mytest = self.MyPieceNameHandler.lookup_piecename_by_symbol("L")
