@@ -15,12 +15,15 @@ class ChuBoardPainter:
         self.MyPieceNameHandler = PieceNameHandler()
         self.pieceimages_folder = "shogi_variants\\pieceimages_chushogi"
         self.pieceimages_extension = "png"
-        self.piecewidth = 73
-        self.pieceheight = 79
-        self.edgesize_top = 25
-        self.edgesize_bottom = 3
-        self.edgesize_left = 3
-        self.edgesize_right = 24
+
+        #TODO make dynamic, get from json
+        self.piecewidth = 180 #73
+        self.pieceheight = 196 #79
+        self.edgesize_top = 62 #25
+        self.edgesize_bottom = 7 #3
+        self.edgesize_left = 7 #3
+        self.edgesize_right = 59 #24
+
         #self.boardcolor = (243, 226, 171)
         self.boardcolor = (204, 85, 34)
         self.boardimage = Image.new('RGB', (self.piecewidth, self.pieceheight), self.boardcolor)
@@ -52,14 +55,14 @@ class ChuBoardPainter:
         self.boardimage = Image.new('RGB', (w, h), self.boardcolor)
 
     def add_coordinates(self):
-        myfontsize = 16
+        myfontsize = 39 #16
         alphabet = "abcdefghijklmnopqrstuvwxyz"
         draw = ImageDraw.Draw(self.boardimage)
         font = ImageFont.truetype("arial.ttf", myfontsize)
 
         for j in range(self.MyChessPosition.boardheight):
             x = (self.MyChessPosition.boardwidth) * self.piecewidth
-            x += self.edgesize_left + 5
+            x += self.edgesize_left + 12 #5
             rj = (self.MyChessPosition.boardheight - 1) - j
             y = rj * self.pieceheight + (self.pieceheight // 2)
             y += self.edgesize_top
