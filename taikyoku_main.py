@@ -4,7 +4,6 @@ mychuboardpainter = ChuBoardPainter()
 
 #Instead of duplicating image files across repos we can reference the other repo
 #We do so for Taikyoku
-#mychuboardpainter.pieceimages_folder = "shogi_variants\\pieceimages_chushogi_set2"
 mychuboardpainter.pieceimages_folder = "..\\chu_shogi_piece_images\\output_set2"
 
 mychuboardpainter.load_file(".\\shogi_variants\\positions\\taikyoku_initial_position.json")
