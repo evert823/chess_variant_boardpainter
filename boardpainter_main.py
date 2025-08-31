@@ -14,3 +14,7 @@ myboardpainter.a1_is_white = False
 
 myboardpainter.load_file(".\\positions\\test_classicwood.json")
 myboardpainter.create_board_image_and_save(".\\boardimages\\test_classicwood.png")
+myboardpainter.load_file(".\\positions\\dark_forest_initial.json")
+myboardpainter.create_board_image_and_save(".\\boardimages\\dark_forest_initial.png")
+myboardpainter.load_file(".\\positions\\dumbarton_initial.json")
+myboardpainter.create_board_image_and_save(".\\boardimages\\dumbarton_initial.png")

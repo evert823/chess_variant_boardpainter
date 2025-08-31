@@ -88,6 +88,18 @@ class BoardPainter:
             return "black"
 
     def paste_piece_image(self, j: int, i: int, psymbol: str):
+        try:
+            myterrain = self.MyChessPosition.terrain[j][i]
+        except:
+            myterrain = ""
+
+        if myterrain == "DF":
+            myextension = "jpg"
+            myfolder = "pieceimages"
+        else:
+            myextension = self.pieceimages_extension
+            myfolder = self.pieceimages_folder
+
         if psymbol[0] == "-":
             piececolour = "black"
         else:
@@ -104,19 +116,36 @@ class BoardPainter:
         squarecolour = self.get_squarecolour(i, j)
 
         if symbol_found == False:
-            imagefilename = f"_notfoundon{squarecolour}.{self.pieceimages_extension}"
+            imagefilename = f"_notfoundon{squarecolour}.{myextension}"
         elif piecename == "":
-            imagefilename = f"vacanton{squarecolour}.{self.pieceimages_extension}"
+            imagefilename = f"vacanton{squarecolour}.{myextension}"
         else:
-            imagefilename = f"{piececolour}{piecename.lower()}on{squarecolour}.{self.pieceimages_extension}"
+            imagefilename = f"{piececolour}{piecename.lower()}on{squarecolour}.{myextension}"
 
         try:
-            pieceimage = Image.open(f"{self.pieceimages_folder}\\{imagefilename}", mode='r')
+            pieceimage = Image.open(f"{myfolder}\\{imagefilename}", mode='r')
         except:
-            imagefilename = f"_notfoundon{squarecolour}.{self.pieceimages_extension}"
-            pieceimage = Image.open(f"{self.pieceimages_folder}\\{imagefilename}", mode='r')
+            imagefilename = f"_notfoundon{squarecolour}.{myextension}"
+            pieceimage = Image.open(f"{myfolder}\\{imagefilename}", mode='r')
 
         pieceimage.convert('RGB')
+
+        # Draw dot for terrain if needed
+        if myterrain in ["h1", "h2"]:
+            draw = ImageDraw.Draw(pieceimage)
+            ps = self.piecesize
+            radius = int(ps * 0.15)
+            # Place dot in the right top corner, with a small margin
+            margin = int(ps * 0.05)
+            center = (ps - margin - radius, margin + radius)
+            if myterrain == "h1":
+                dot_color = (255, 0, 0)  # red
+            else:
+                dot_color = (255, 255, 255)  # white
+            draw.ellipse(
+                [center[0] - radius, center[1] - radius, center[0] + radius, center[1] + radius],
+                fill=dot_color, outline=None)
+
         self.boardimage.paste(pieceimage, (x, y))
 
     def create_board_image(self):
