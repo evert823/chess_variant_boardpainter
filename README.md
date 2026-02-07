@@ -18,3 +18,7 @@ The boards will be created in "/boardimages"
 This setup contains several piece definitions.
 - More pieces can be added
 - How that works exactly is evident from the examples
+
+## Additional Resources
+
+- [How to Check Your GitHub Copilot Status](COPILOT_STATUS_GUIDE.md) - If you're wondering about your GitHub Copilot subscription status
