@@ -5,6 +5,7 @@ B,Bishop
 Bf,Buffalo
 Bo,Bomb
 C,Chancellor
+Dn,Drone
 D,Dwarf
 E,Elf
 EW,EvilWizard
@@ -20,6 +21,7 @@ NN,Nightrider
 p,Pawn
 Q,Queen
 R,Rook
+So,Sophon
 T,TimeThief
 Tb,Tomb
 V,VerticalMover
