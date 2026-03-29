@@ -54,11 +54,26 @@ class ChuBoardPainter:
         w, h = self.boardimage_w_h()
         self.boardimage = Image.new('RGB', (w, h), self.boardcolor)
 
+    def _load_font(self, size):
+        candidates = [
+            "arial.ttf",
+            "DejaVuSans.ttf",
+            "LiberationSans-Regular.ttf",
+            "NotoSans-Regular.ttf",
+        ]
+        for font_name in candidates:
+            try:
+                return ImageFont.truetype(font_name, size)
+            except OSError:
+                pass
+        return ImageFont.load_default()
+
     def add_coordinates(self):
         myfontsize = 39 #16
         alphabet = "abcdefghijklmnopqrstuvwxyz"
         draw = ImageDraw.Draw(self.boardimage)
-        font = ImageFont.truetype("arial.ttf", myfontsize)
+        #font = ImageFont.truetype("arial.ttf", myfontsize)
+        font = self._load_font(size=myfontsize)
 
         for j in range(self.MyChessPosition.boardheight):
             x = (self.MyChessPosition.boardwidth) * self.piecewidth
