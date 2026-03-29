@@ -13,7 +13,7 @@ class ChuBoardPainter:
     def __init__(self):
         self.MyChessPosition = ChessPosition()
         self.MyPieceNameHandler = PieceNameHandler()
-        self.pieceimages_folder = "shogi_variants\\pieceimages_chushogi"
+        self.pieceimages_folder = "shogi_variants/pieceimages_chushogi"
         self.pieceimages_extension = "png"
 
         #TODO make dynamic, get from json
@@ -30,7 +30,7 @@ class ChuBoardPainter:
         self.load_piece_definitions()
 
     def load_piece_definitions(self):
-        self.MyPieceNameHandler.load_piece_definitions(filename=".\\shogi_variants\\piecedefinitions\\chushogipiecedefinitions.csv")
+        self.MyPieceNameHandler.load_piece_definitions(filename="./shogi_variants/piecedefinitions/chushogipiecedefinitions.csv")
         mytest = self.MyPieceNameHandler.lookup_piecename_by_symbol("K")
         assert mytest == "King"
         mytest = self.MyPieceNameHandler.lookup_piecename_by_symbol("L")
@@ -140,12 +140,12 @@ class ChuBoardPainter:
 
         try:
             try:
-                pieceimage = Image.open(f"{self.pieceimages_folder}\\{imagefilename}", mode='r')
+                pieceimage = Image.open(f"{self.pieceimages_folder}/{imagefilename}", mode='r')
             except:
-                pieceimage = Image.open(f"{self.pieceimages_folder}\\{imagefilename2}", mode='r')
+                pieceimage = Image.open(f"{self.pieceimages_folder}/{imagefilename2}", mode='r')
         except:
             imagefilename = f"_notfound.{self.pieceimages_extension}"
-            pieceimage = Image.open(f"{self.pieceimages_folder}\\{imagefilename}", mode='r')
+            pieceimage = Image.open(f"{self.pieceimages_folder}/{imagefilename}", mode='r')
 
         pieceimage.convert('RGB')
         self.boardimage.paste(pieceimage, (x, y))

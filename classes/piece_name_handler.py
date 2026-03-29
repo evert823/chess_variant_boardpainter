@@ -2,7 +2,7 @@ class PieceNameHandler:
     def __init__(self):
         self.piecedict = {"piecedefinitions" : []}
 
-    def load_piece_definitions(self, filename=".\\piecedefinitions\\piecedefinitions.csv"):
+    def load_piece_definitions(self, filename="./piecedefinitions/piecedefinitions.csv"):
         File1 = open(filename, 'r')
         Lines = File1.readlines()
         for line in Lines:
