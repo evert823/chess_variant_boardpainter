@@ -42,6 +42,20 @@ class BoardPainter:
         w, h = self.boardimage_w_h()
         self.boardimage = Image.new('RGB', (w, h), (0, 0, 0))
 
+    def _load_font(self, size):
+        candidates = [
+            "arial.ttf",
+            "DejaVuSans.ttf",
+            "LiberationSans-Regular.ttf",
+            "NotoSans-Regular.ttf",
+        ]
+        for font_name in candidates:
+            try:
+                return ImageFont.truetype(font_name, size)
+            except OSError:
+                pass
+        return ImageFont.load_default()
+
     def add_coordinates(self):
         myfontsize = 16
         if self.MyChessPosition.boardheight > 9:
@@ -49,7 +63,8 @@ class BoardPainter:
 
         alphabet = "abcdefghijklmnopqrstuvwxyz"
         draw = ImageDraw.Draw(self.boardimage)
-        font = ImageFont.truetype("arial.ttf", myfontsize)
+        #font = ImageFont.truetype("arial.ttf", myfontsize)
+        font = self._load_font(size=myfontsize)
 
         for j in range(self.MyChessPosition.boardheight):
             rj = (self.MyChessPosition.boardheight - 1) - j
