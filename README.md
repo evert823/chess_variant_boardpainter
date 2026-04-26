@@ -18,3 +18,5 @@ The boards will be created in "/boardimages"
 This setup contains several piece definitions.
 - More pieces can be added
 - How that works exactly is evident from the examples
+
+The scripts for large Shogi variants require the repository chu_shogi_piece_images
